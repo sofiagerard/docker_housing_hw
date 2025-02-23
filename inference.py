@@ -1,49 +1,54 @@
-# inference.py - Script para generar predicciones.
-
 import logging
+import os
+import argparse
 import pandas as pd
-from src.model_utils import load_model, make_predictions, save_predictions
+import joblib
+from src.model_utils import make_predictions  # ⬅️ Cambiar `predict_with_model` por `make_predictions`
 
+# Configuración de logging
 logging.basicConfig(
     level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s"
 )
 
-
-def run_inference(data_path: str, model_path: str, output_path: str):
-    """Genera predicciones utilizando un modelo entrenado."""
+def inference(data_path, model_path, output_path):
+    """Realiza inferencias utilizando un modelo entrenado y guarda las predicciones."""
     try:
-        # Cargar datos desde la carpeta prep directamente
+        # Verificar existencia del archivo de datos
+        if not os.path.exists(data_path):
+            raise FileNotFoundError(f"❌ El archivo de datos {data_path} no existe.")
+
+        # Verificar existencia del modelo entrenado
+        if not os.path.exists(model_path):
+            raise FileNotFoundError(f"❌ El modelo {model_path} no existe.")
+
+        # Cargar datos
         df = pd.read_csv(data_path)
-        logging.info(
-            f"🔍 Datos cargados correctamente para inferencia. Dimensiones: {df.shape}"
-        )
+        logging.info(f"🔍 Columnas en los datos de prueba: {df.columns.tolist()}")
 
-        # Cargar modelo
-        model = load_model(model_path)
-        if model is None:
-            logging.error("❌ No se pudo cargar el modelo. Proceso abortado.")
-            return
+        # Cargar el modelo entrenado
+        model = joblib.load(model_path)
+        logging.info(f"✅ Modelo cargado exitosamente desde {model_path}")
 
-        # Generar predicciones
-        predictions = make_predictions(model, df)
-        if predictions is None:
-            logging.error(
-                "❌ No se pudieron generar las predicciones. Proceso abortado."
-            )
-            return
+        # Realizar predicciones
+        predictions = make_predictions(model, df)  # ⬅️ Cambiado aquí también
 
-        # Guardar predicciones
-        save_predictions(predictions, output_path)
+        # Guardar predicciones en archivo CSV
+        pd.DataFrame(predictions, columns=["Predictions"]).to_csv(output_path, index=False)
         logging.info(f"✅ Predicciones guardadas en {output_path}")
 
     except FileNotFoundError as e:
-        logging.error(f"❌ Error: No se encontró el archivo: {e}")
-    except Exception as e:
-        logging.error(f"❌ Error en el proceso de inferencia: {e}")
+        logging.error(f"❌ Error: {e}")
 
+    except Exception as e:
+        logging.exception("❌ Error inesperado durante la inferencia")
+
+    logging.info("🎉 Proceso de inferencia finalizado sin errores.")
 
 if __name__ == "__main__":
-    # Cambiar la ruta a data/prep/test.csv directamente
-    run_inference(
-        "data/prep/test.csv", "model.joblib", "data/predictions/predictions.csv"
-    )
+    parser = argparse.ArgumentParser(description="Realizar inferencias con un modelo entrenado")
+    parser.add_argument("--data", type=str, required=True, help="Ruta del archivo de datos de prueba")
+    parser.add_argument("--model", type=str, required=True, help="Ruta del modelo entrenado")
+    parser.add_argument("--output", type=str, default="predictions.csv", help="Ruta donde se guardarán las predicciones")
+
+    args = parser.parse_args()
+    inference(args.data, args.model, args.output)

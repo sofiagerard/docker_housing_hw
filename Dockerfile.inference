@@ -1,0 +1,21 @@
+# Usar Python como imagen base
+FROM python:3.11.2
+
+# Definir el directorio de trabajo dentro del contenedor
+WORKDIR /usr/src/app
+
+# Copiar las dependencias desde la raíz del proyecto
+COPY requirements.txt .
+
+# Instalar las dependencias
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Copiar la carpeta `src/` y `inference.py` desde la raíz del proyecto
+COPY src/ src/
+COPY inference.py .
+
+# Definir `inference.py` como comando principal
+ENTRYPOINT ["python", "inference.py"]
+
+# Definir valores por defecto para los argumentos
+CMD ["--data", "data/inference/test.csv", "--model", "model.joblib", "--output", "predictions.csv"]
