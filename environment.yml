@@ -1,0 +1,18 @@
+name: tareas
+channels:
+  - defaults
+  - https://repo.anaconda.com/pkgs/main
+  - https://repo.anaconda.com/pkgs/r
+dependencies:
+  - matplotlib
+  - numpy
+  - pandas
+  - scikit-learn
+  - pytest
+  - ipykernel
+  - seaborn=0.12.2
+  - xgboost
+  - black
+  - flake8
+  - pylint
+prefix: /opt/anaconda3/envs/tareas

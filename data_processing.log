@@ -1,0 +1,12 @@
+2025-02-15 14:21:47,232 - ERROR - ❌ Error al codificar variables categóricas: OneHotEncoder.__init__() got an unexpected keyword argument 'sparse'
+2025-02-15 14:23:35,115 - ERROR - ❌ Error al codificar variables categóricas: OneHotEncoder.__init__() got an unexpected keyword argument 'sparse'
+2025-02-15 14:25:27,475 - ERROR - ❌ Error al codificar variables categóricas: OneHotEncoder.__init__() got an unexpected keyword argument 'sparse'
+2025-02-15 14:26:41,632 - ERROR - ❌ Error al codificar variables categóricas: OneHotEncoder.__init__() got an unexpected keyword argument 'sparse'
+2025-02-15 14:32:48,678 - ERROR - ❌ Error al codificar variables categóricas: Shape of passed values is (1460, 1), indices imply (1460, 224)
+2025-02-15 14:34:16,799 - ERROR - ❌ Error al codificar variables categóricas: Shape of passed values is (1460, 1), indices imply (1460, 224)
+2025-02-15 14:36:01,640 - ERROR - Error en encode_categorical: Length mismatch: Expected axis has 224 elements, new values have 215 elements
+2025-02-15 14:36:01,640 - ERROR - ❌ Error al codificar variables categóricas: Length mismatch: Expected axis has 224 elements, new values have 215 elements
+2025-02-15 14:37:04,463 - ERROR - Error en encode_categorical: Length mismatch: Expected axis has 224 elements, new values have 215 elements
+2025-02-15 14:37:04,464 - ERROR - ❌ Error al codificar variables categóricas: Length mismatch: Expected axis has 224 elements, new values have 215 elements
+2025-02-15 14:38:23,147 - ERROR - Error en encode_categorical: Length mismatch: Expected axis has 224 elements, new values have 215 elements
+2025-02-15 14:38:23,148 - ERROR - ❌ Error al codificar variables categóricas: Length mismatch: Expected axis has 224 elements, new values have 215 elements

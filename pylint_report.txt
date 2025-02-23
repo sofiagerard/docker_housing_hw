@@ -1,0 +1,85 @@
+************* Module src.data_utils
+src/data_utils.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+src/data_utils.py:19:11: W0718: Catching too general exception Exception (broad-exception-caught)
+src/data_utils.py:20:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+src/data_utils.py:45:11: W0718: Catching too general exception Exception (broad-exception-caught)
+src/data_utils.py:46:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+src/data_utils.py:5:0: C0411: standard import "logging" should be placed before third party import "pandas" (wrong-import-order)
+************* Module src.feature_engineering_utils
+src/feature_engineering_utils.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+src/feature_engineering_utils.py:50:11: W0718: Catching too general exception Exception (broad-exception-caught)
+src/feature_engineering_utils.py:31:16: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+src/feature_engineering_utils.py:42:12: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+src/feature_engineering_utils.py:48:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+src/feature_engineering_utils.py:51:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+src/feature_engineering_utils.py:4:0: C0411: standard import "logging" should be placed before third party import "pandas" (wrong-import-order)
+src/feature_engineering_utils.py:3:0: W0611: Unused pandas imported as pd (unused-import)
+************* Module src.model_utils
+src/model_utils.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+src/model_utils.py:64:11: W0718: Catching too general exception Exception (broad-exception-caught)
+src/model_utils.py:43:8: C0103: Variable name "X" doesn't conform to snake_case naming style (invalid-name)
+src/model_utils.py:56:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+src/model_utils.py:62:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+src/model_utils.py:65:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+src/model_utils.py:74:11: W0718: Catching too general exception Exception (broad-exception-caught)
+src/model_utils.py:75:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+src/model_utils.py:79:46: C0103: Argument name "X" doesn't conform to snake_case naming style (invalid-name)
+src/model_utils.py:87:11: W0718: Catching too general exception Exception (broad-exception-caught)
+src/model_utils.py:88:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+src/model_utils.py:98:11: W0718: Catching too general exception Exception (broad-exception-caught)
+src/model_utils.py:97:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+src/model_utils.py:99:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+src/model_utils.py:3:0: C0411: standard import "logging" should be placed before third party imports "pandas", "joblib" (wrong-import-order)
+src/model_utils.py:6:0: C0411: standard import "typing.Optional" should be placed before third party imports "pandas", "joblib", "sklearn.linear_model.LinearRegression", "sklearn.metrics.mean_absolute_error" (wrong-import-order)
+************* Module inference
+inference.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+inference.py:41:11: W0718: Catching too general exception Exception (broad-exception-caught)
+inference.py:17:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+inference.py:37:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+inference.py:40:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+inference.py:42:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+************* Module prep
+prep.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+prep.py:62:11: W0718: Catching too general exception Exception (broad-exception-caught)
+prep.py:56:12: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+prep.py:58:12: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+prep.py:63:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+prep.py:5:0: C0411: third party import "pandas" should be placed before first party imports "src.data_utils.load_data", "src.feature_engineering_utils.create_features"  (wrong-import-order)
+prep.py:6:0: C0411: standard import "logging" should be placed before third party import "pandas" and first party imports "src.data_utils.load_data", "src.feature_engineering_utils.create_features"  (wrong-import-order)
+prep.py:7:0: C0411: standard import "shutil" should be placed before third party import "pandas" and first party imports "src.data_utils.load_data", "src.feature_engineering_utils.create_features"  (wrong-import-order)
+prep.py:8:0: C0411: standard import "os" should be placed before third party import "pandas" and first party imports "src.data_utils.load_data", "src.feature_engineering_utils.create_features"  (wrong-import-order)
+prep.py:5:0: W0611: Unused pandas imported as pd (unused-import)
+************* Module train
+train.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+train.py:60:11: W0718: Catching too general exception Exception (broad-exception-caught)
+train.py:42:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+train.py:50:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+train.py:55:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+train.py:58:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+train.py:61:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+train.py:1:0: R0801: Similar lines in 2 files
+==src.model_utils:[13:32]
+==train:[16:36]
+    "OverallQual",
+    "GrLivArea",
+    "TotalBsmtSF",
+    "GarageCars",
+    "GarageArea",
+    "1stFlrSF",
+    "FullBath",
+    "TotRmsAbvGrd",
+    "YearBuilt",
+    "YearRemodAdd",
+    "HouseAge",
+    "TotalSF",
+    "TotalBath",
+]
+
+
+def train_and_save_model(train_path: str, model_path: str) -> None:
+    """Entrena un modelo de regresión lineal y lo guarda en el disco."""
+    try: (duplicate-code)
+
+------------------------------------------------------------------
+Your code has been rated at 7.26/10 (previous run: 0.00/10, +7.26)
+
