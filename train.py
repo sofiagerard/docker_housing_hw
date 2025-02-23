@@ -41,8 +41,9 @@ def train(data_path, model_path):
         if missing_columns:
             raise ValueError(f"❌ Faltan las siguientes columnas: {missing_columns}")
 
-        # Crear la carpeta donde se guardará el modelo si no existe
-        os.makedirs(os.path.dirname(model_path), exist_ok=True)
+        # Verificar que model_path no sea un directorio
+        if os.path.dirname(model_path):
+            raise ValueError(f"❌ El modelo no debe guardarse en una carpeta. Usa un nombre de archivo directamente (Ej: 'model.joblib').")
 
         # Entrenar y guardar el modelo
         train_and_save_model(data_path, model_path)
@@ -62,7 +63,7 @@ def train(data_path, model_path):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Entrenar un modelo de Machine Learning")
     parser.add_argument("--data", type=str, required=True, help="Ruta del archivo de datos de entrenamiento")
-    parser.add_argument("--output-model", type=str, default="/usr/src/app/model.joblib", help="Ruta donde se guardará el modelo entrenado")
+    parser.add_argument("--output-model", type=str, default="model.joblib", help="Ruta donde se guardará el modelo entrenado")
 
     args = parser.parse_args()
     train(args.data, args.output_model)

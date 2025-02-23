@@ -18,4 +18,4 @@ COPY train.py .
 ENTRYPOINT ["python", "train.py"]
 
 # Definir valores por defecto para los argumentos
-CMD ["--data", "data/prep/train.csv", "--output-model", "/usr/src/app/model.joblib"]
+CMD ["--data", "data/prep/train.csv", "--output-model", "model.joblib"]
