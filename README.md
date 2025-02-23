@@ -5,6 +5,7 @@
 - Convertir tu script de entrenamiento (train.py) en un contenedor Docker.
 - Convertir tu script de inferencia (inference.py) en otro contenedor Docker.
 - Usar argparse para parametrizar entradas y salidas de datos (incluyendo el modelo).
+- Montar volúmenes (-v) para guardar y reutilizar los modelos y datos en la PC.
   
 ## Estructura del Repositorio
 
