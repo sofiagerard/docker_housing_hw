@@ -1,5 +1,11 @@
 # Proyecto: Predicción de Precios de Casas en CDMX
+## 📌 Creación de Contenedores para Entrenamiento e Inferencia en Docker 🐳📂
+## ✅ Objetivo:
 
+- Convertir tu script de entrenamiento (train.py) en un contenedor Docker.
+- Convertir tu script de inferencia (inference.py) en otro contenedor Docker.
+- Usar argparse para parametrizar entradas y salidas de datos (incluyendo el modelo).
+  
 ## Estructura del Repositorio
 
 ```plaintext
@@ -101,7 +107,6 @@ flake8 src/*.py *.py > flake8_report.txt
 ```
 
 Esto generará tres reportes que se pueden revisar para garantizar un código consistente y libre de errores.
-
 
 
 ## Autoría
