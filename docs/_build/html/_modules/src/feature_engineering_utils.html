@@ -1,0 +1,158 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="es" data-content_root="../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>src.feature_engineering_utils &mdash; documentación de docker_housing_hw - 0.1</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=9c9b61ad"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../_static/translations.js?v=f85f4cfb"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Índice" href="../../genindex.html" />
+    <link rel="search" title="Búsqueda" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            docker_housing_hw
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Buscar documentos" aria-label="Buscar documentos" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contenidos:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../modules.html">src</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../src.html">src package</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">docker_housing_hw</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Código de módulo</a></li>
+      <li class="breadcrumb-item active">src.feature_engineering_utils</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Código fuente para src.feature_engineering_utils</h1><div class="highlight"><pre>
+<span></span><span class="c1"># feature_eng.py - Funciones para la ingeniería de características</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">logging</span>
+
+<span class="n">logging</span><span class="o">.</span><span class="n">basicConfig</span><span class="p">(</span>
+    <span class="n">level</span><span class="o">=</span><span class="n">logging</span><span class="o">.</span><span class="n">INFO</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%(asctime)s</span><span class="s2"> - </span><span class="si">%(levelname)s</span><span class="s2"> - </span><span class="si">%(message)s</span><span class="s2">&quot;</span>
+<span class="p">)</span>
+
+
+<div class="viewcode-block" id="create_features">
+<a class="viewcode-back" href="../../src.html#src.feature_engineering_utils.create_features">[documentos]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">create_features</span><span class="p">(</span><span class="n">df_train</span><span class="p">,</span> <span class="n">df_test</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Crea nuevas características derivadas de las columnas existentes.&quot;&quot;&quot;</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="c1"># Generar características para ambos DataFrames</span>
+        <span class="k">for</span> <span class="n">df</span> <span class="ow">in</span> <span class="p">[</span><span class="n">df_train</span><span class="p">,</span> <span class="n">df_test</span><span class="p">]:</span>
+            <span class="c1"># Crear HouseAge, TotalSF y TotalBath</span>
+            <span class="n">df</span><span class="p">[</span><span class="s2">&quot;HouseAge&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;YrSold&quot;</span><span class="p">]</span> <span class="o">-</span> <span class="n">df</span><span class="p">[[</span><span class="s2">&quot;YearBuilt&quot;</span><span class="p">,</span> <span class="s2">&quot;YearRemodAdd&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">max</span><span class="p">(</span>
+                <span class="n">axis</span><span class="o">=</span><span class="mi">1</span>
+            <span class="p">)</span>
+            <span class="n">df</span><span class="p">[</span><span class="s2">&quot;TotalSF&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;GrLivArea&quot;</span><span class="p">]</span> <span class="o">+</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;TotalBsmtSF&quot;</span><span class="p">]</span>
+            <span class="n">df</span><span class="p">[</span><span class="s2">&quot;TotalBath&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
+                <span class="n">df</span><span class="p">[</span><span class="s2">&quot;FullBath&quot;</span><span class="p">]</span>
+                <span class="o">+</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;HalfBath&quot;</span><span class="p">]</span> <span class="o">*</span> <span class="mf">0.5</span><span class="p">)</span>
+                <span class="o">+</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;BsmtFullBath&quot;</span><span class="p">]</span>
+                <span class="o">+</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;BsmtHalfBath&quot;</span><span class="p">]</span> <span class="o">*</span> <span class="mf">0.5</span><span class="p">)</span>
+            <span class="p">)</span>
+
+            <span class="c1"># Verificar y manejar nulos</span>
+            <span class="n">missing_cols</span> <span class="o">=</span> <span class="n">df</span><span class="p">[[</span><span class="s2">&quot;HouseAge&quot;</span><span class="p">,</span> <span class="s2">&quot;TotalSF&quot;</span><span class="p">,</span> <span class="s2">&quot;TotalBath&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+            <span class="k">if</span> <span class="n">missing_cols</span><span class="o">.</span><span class="n">any</span><span class="p">():</span>
+                <span class="n">logging</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;⚠️ Columnas con nulos detectadas: </span><span class="si">{</span><span class="n">missing_cols</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+                <span class="n">df</span><span class="p">[[</span><span class="s2">&quot;HouseAge&quot;</span><span class="p">,</span> <span class="s2">&quot;TotalSF&quot;</span><span class="p">,</span> <span class="s2">&quot;TotalBath&quot;</span><span class="p">]]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span>
+                    <span class="p">[</span><span class="s2">&quot;HouseAge&quot;</span><span class="p">,</span> <span class="s2">&quot;TotalSF&quot;</span><span class="p">,</span> <span class="s2">&quot;TotalBath&quot;</span><span class="p">]</span>
+                <span class="p">]</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+
+        <span class="c1"># Validar la presencia de las columnas requeridas</span>
+        <span class="n">required_cols</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;HouseAge&quot;</span><span class="p">,</span> <span class="s2">&quot;TotalSF&quot;</span><span class="p">,</span> <span class="s2">&quot;TotalBath&quot;</span><span class="p">]</span>
+        <span class="k">if</span> <span class="nb">all</span><span class="p">(</span><span class="n">col</span> <span class="ow">in</span> <span class="n">df_train</span><span class="o">.</span><span class="n">columns</span> <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">required_cols</span><span class="p">):</span>
+            <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;✅ Todas las características fueron generadas exitosamente&quot;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">missing</span> <span class="o">=</span> <span class="p">[</span><span class="n">col</span> <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">required_cols</span> <span class="k">if</span> <span class="n">col</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">df_train</span><span class="o">.</span><span class="n">columns</span><span class="p">]</span>
+            <span class="n">logging</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;⚠️ Faltan las siguientes columnas: </span><span class="si">{</span><span class="n">missing</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+        <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;✅ Ingeniería de características completada&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">df_train</span><span class="p">,</span> <span class="n">df_test</span>
+
+    <span class="k">except</span> <span class="ne">KeyError</span> <span class="k">as</span> <span class="n">ke</span><span class="p">:</span>
+        <span class="n">logging</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;❌ Error: Falta alguna columna esperada: </span><span class="si">{</span><span class="n">ke</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="n">logging</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;❌ Error inesperado al crear características: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span></div>
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Derechos de autor 2025, Sofia Gerard.</p>
+  </div>
+
+  Compilado con <a href="https://www.sphinx-doc.org/">Sphinx</a> usando un
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">tema</a>
+    proporcionado por <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
