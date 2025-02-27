@@ -1,0 +1,4 @@
+# Ignore data and build directories
+
+data/
+build/
